@@ -275,12 +275,12 @@ int main(int argc, char *argv[])
     p2 = NULL; */
   printf("\n");
 
-/*   for (int y = 0; y < parametro; y++){
+  for (int y = 0; y < parametro; y++){
     for (int x = 0; x < parametro; x++){
       printf("%d ", finalMatrix[y][x]);
     }  
     printf("\n");
-  } */
+  }
 
   printf("\n- - - - - - - - - - - - - - - - - -");
   printf("\n MATRIZ DE STRASSEN");
@@ -297,7 +297,7 @@ int main(int argc, char *argv[])
     printf("\nA matriz de Strassen demorou %f segundos \n", tempo); 
   printf("\n- - - - - - - - - - - - - - - - - -");
 
- /*    afficher(C,potencia); */
+    afficher(C,potencia);
 
   
   
