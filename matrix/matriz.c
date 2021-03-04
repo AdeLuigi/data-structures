@@ -7,6 +7,18 @@
 
 
 
+void mostra(int ** Mat, int n)
+
+{
+
+		for(int i=0;i<n;i++){
+        printf("\n");
+       		 for(int j=0;j<n;j++)
+           		 printf("%d ",Mat[i][j]);
+    	}
+    	printf("\n");
+}
+
 int** iniciaMatriz(int n)
 {
 
@@ -147,25 +159,6 @@ return C;
 
 }
 
-void afficher(int ** Mat, int n)
-
-{
-
-		for(int i=0;i<n;i++){
-        printf("\n");
-       		 for(int j=0;j<n;j++)
-           		 printf("%d ",Mat[i][j]);
-    	}
-    	printf("\n");
-}
-
-
-void Free(int ** Mat)
-{
-
-	free(Mat);
-}
-
 int main(int argc, char *argv[])
 {
   int var = atoi(argv[1]);
@@ -297,7 +290,7 @@ int main(int argc, char *argv[])
     printf("\nA matriz de Strassen demorou %f segundos \n", tempo); 
   printf("\n- - - - - - - - - - - - - - - - - -");
 
-    afficher(C,potencia);
+    mostra(C,potencia);
 
   
   
