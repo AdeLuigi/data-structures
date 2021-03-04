@@ -7,7 +7,7 @@
 
 
 
-int** initializeMatrix(int n)
+int** iniciaMatriz(int n)
 {
 
 	int** Mat;
@@ -23,8 +23,8 @@ int** initializeMatrix(int n)
 }
 
 
-int ** ajouter (int ** M1, int ** M2, int n) { 
-    int ** temp = initializeMatrix (n); 
+int ** adiciona (int ** M1, int ** M2, int n) { 
+    int ** temp = iniciaMatriz (n); 
     for (int i = 0; i <n; i ++) 
         for (int j = 0; j <n; j ++) 
             temp [i] [j] = M1 [i] [j] + M2 [i] [j]; 
@@ -32,8 +32,8 @@ int ** ajouter (int ** M1, int ** M2, int n) {
 }
 
 
-int ** soustraire (int ** M1, int ** M2, int n) { 
-    int ** temp = initializeMatrix (n); 
+int ** subtrai (int ** M1, int ** M2, int n) { 
+    int ** temp = iniciaMatriz (n); 
     for (int i = 0; i <n; i ++) 
         for (int j = 0; j <n; j ++) 
             temp [i] [j] = M1 [i] [j] - M2 [i] [j]; 
@@ -47,24 +47,24 @@ int **Strassen (int **A,int** B,int n){
 
 
 if (n == 1) { 
-    int ** C = initializeMatrix (1); 
+    int ** C = iniciaMatriz (1); 
     C [0] [0] = A [0] [0] * B [0] [0]; 
     return C; 
 }
 
 
-int ** C = initializeMatrix (n); 
+int ** C = iniciaMatriz (n); 
 int k = n / 2;
 
 
-int ** A11 = initializeMatrix (k); 
-int ** A12 = initializeMatrix (k); 
-int ** A21 = initializeMatrix (k); 
-int ** A22 = initializeMatrix (k); 
-int ** B11 = initializeMatrix (k); 
-int ** B12 = initializeMatrix (k); 
-int ** B21 = initializeMatrix (k); 
-int ** B22 = initializeMatrix (k);
+int ** A11 = iniciaMatriz (k); 
+int ** A12 = iniciaMatriz (k); 
+int ** A21 = iniciaMatriz (k); 
+int ** A22 = iniciaMatriz (k); 
+int ** B11 = iniciaMatriz (k); 
+int ** B12 = iniciaMatriz (k); 
+int ** B21 = iniciaMatriz (k); 
+int ** B22 = iniciaMatriz (k);
 for (int i = 0; i <k; i ++) 
     for (int j = 0; j <k; j ++) { 
         A11 [i] [j] = A [i] [j]; 
@@ -78,18 +78,18 @@ for (int i = 0; i <k; i ++)
     }
 
 
-int ** P1 = Strassen  (A11, soustraire (B12, B22, k), k); 
-int ** P2 = Strassen  (ajouter (A11, A12, k), B22, k); 
-int ** P3 = Strassen  (ajouter (A21, A22, k), B11, k); 
-int ** P4 = Strassen  (A22, soustraire (B21, B11, k), k); 
-int ** P5 = Strassen  (ajouter (A11, A22, k), ajouter (B11, B22, k), k); 
-int ** P6 = Strassen  (soustraire (A12, A22, k), ajouter (B21, B22, k), k); 
-int ** P7 = Strassen  (soustraire (A11, A21, k), ajouter (B11, B12, k), k);
+int ** P1 = Strassen  (A11, subtrai (B12, B22, k), k); 
+int ** P2 = Strassen  (adiciona (A11, A12, k), B22, k); 
+int ** P3 = Strassen  (adiciona (A21, A22, k), B11, k); 
+int ** P4 = Strassen  (A22, subtrai (B21, B11, k), k); 
+int ** P5 = Strassen  (adiciona (A11, A22, k), adiciona (B11, B22, k), k); 
+int ** P6 = Strassen  (subtrai (A12, A22, k), adiciona (B21, B22, k), k); 
+int ** P7 = Strassen  (subtrai (A11, A21, k), adiciona (B11, B12, k), k);
 
-int ** C11 = soustraire (ajouter (ajouter (P5, P4, k), P6, k), P2, k); 
-int ** C12 = ajouter (P1, P2, k); 
-int ** C21 = ajouter (P3, P4, k); 
-int ** C22 = soustraire (soustraire (ajouter (P5, P1, k), P3, k), P7, k);
+int ** C11 = subtrai (adiciona (adiciona (P5, P4, k), P6, k), P2, k); 
+int ** C12 = adiciona (P1, P2, k); 
+int ** C21 = adiciona (P3, P4, k); 
+int ** C22 = subtrai (subtrai (adiciona (P5, P1, k), P3, k), P7, k);
 
 
  for(int i = 0; i <k; i ++) 
@@ -173,9 +173,17 @@ int main(int argc, char *argv[])
   double potencia = pow(2, (double)(var)); 
 
   int parametro = potencia;
-  printf("Matriz de %dx%d",parametro,parametro);
+  printf("\n- - - - - - - - - - - - - - - - - -");
+  printf("\nMatriz de %dx%d",parametro,parametro);
+  printf("\n- - - - - - - - - - - - - - - - - -");
+
   printf("\nCom %d de números aleatórios dentro dela",parametro*parametro);
-  printf("\n");
+
+
+  printf("\n- - - - - - - - - - - - - - - - - -");
+  printf("\n MATRIZ COMUM");
+
+  printf("\n- - - - - - - - - - - - - - - - - -");
 
   srand(time(NULL));
 
@@ -255,6 +263,7 @@ int main(int argc, char *argv[])
     p2 = secondMatrix;
     p1 = NULL;
     p2 = NULL; */
+  printf("\n");
 
   for (int y = 0; y < parametro; y++){
     for (int x = 0; x < parametro; x++){
@@ -262,12 +271,11 @@ int main(int argc, char *argv[])
     }  
     printf("\n");
   }
-  printf("\n");
 
-  printf("\n - - - - - - - - - - - - - - - - - -");
+  printf("\n- - - - - - - - - - - - - - - - - -");
   printf("\n MATRIZ DE STRASSEN");
 
-  printf("\n - - - - - - - - - - - - - - - - - -");
+  printf("\n- - - - - - - - - - - - - - - - - -");
 
 
   int **C= Strassen (firstMatrix,secondMatrix,potencia);
