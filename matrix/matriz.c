@@ -243,6 +243,8 @@ int main(int argc, char *argv[])
     }  
   }
 
+     clock_t t; 
+    t = clock(); 
     for (int y = 0; y < parametro; y++)
     {
       for (int x = 0; x < parametro; x++)
@@ -255,7 +257,15 @@ int main(int argc, char *argv[])
         
       }
 
+
     }
+
+    t = clock() - t; 
+    double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds 
+  
+    printf("\nA matriz normal demorou %f segundos \n", time_taken); 
+  printf("\n- - - - - - - - - - - - - - - - - -");
+
 
 /*     free(*firstMatrix);
     free(*secondMatrix);
@@ -265,22 +275,29 @@ int main(int argc, char *argv[])
     p2 = NULL; */
   printf("\n");
 
-  for (int y = 0; y < parametro; y++){
+/*   for (int y = 0; y < parametro; y++){
     for (int x = 0; x < parametro; x++){
       printf("%d ", finalMatrix[y][x]);
     }  
     printf("\n");
-  }
+  } */
 
   printf("\n- - - - - - - - - - - - - - - - - -");
   printf("\n MATRIZ DE STRASSEN");
 
   printf("\n- - - - - - - - - - - - - - - - - -");
 
-
+     clock_t b; 
+    b = clock(); 
   int **C= Strassen (firstMatrix,secondMatrix,potencia);
 
-    afficher(C,potencia);
+      b = clock() - b; 
+    double tempo = ((double)b)/CLOCKS_PER_SEC; // in seconds 
+  
+    printf("\nA matriz de Strassen demorou %f segundos \n", tempo); 
+  printf("\n- - - - - - - - - - - - - - - - - -");
+
+ /*    afficher(C,potencia); */
 
   
   
