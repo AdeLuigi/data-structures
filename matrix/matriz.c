@@ -16,7 +16,7 @@ int** initializeMatrix(int n)
 	for(int i=0;i<n;i++){
             *(Mat+i)=(int*)calloc(n,sizeof(int));
             for(int j=0;j<n;j++){
-            			Mat[i][j]=rand() % 10;
+            			Mat[i][j]=rand() % 1000;
             }
     }
     return  Mat;
@@ -154,7 +154,7 @@ void afficher(int ** Mat, int n)
 		for(int i=0;i<n;i++){
         printf("\n");
        		 for(int j=0;j<n;j++)
-           		 printf("\t%d",Mat[i][j]);
+           		 printf("%d ",Mat[i][j]);
     	}
     	printf("\n");
 }
@@ -212,14 +212,26 @@ int main(int argc, char *argv[])
   {
     for (int j = 0; j < parametro; j++)
     {
-      firstMatrix[i][j] = rand() % 10;
+            int mudaSinal = rand() % 2 +1;
+      if(mudaSinal == 1){
+        firstMatrix[i][j] = (rand() % 1000)*-1;
+      }else{
+        firstMatrix[i][j] = rand() % 1000;
+
+      }
     }
     
   }
 
   for (int i = 0; i < parametro; i++){
     for (int j = 0; j < parametro; j++){
-      secondMatrix[i][j] = rand() % 10;
+      int mudaSinal = rand() % 2 +1;
+      if(mudaSinal == 1){
+        secondMatrix[i][j] = (rand() % 1000)*-1;
+      }else{
+        secondMatrix[i][j] = rand() % 1000;
+
+      }
     }  
   }
 
@@ -237,12 +249,12 @@ int main(int argc, char *argv[])
 
     }
 
-    free(*firstMatrix);
+/*     free(*firstMatrix);
     free(*secondMatrix);
     p1 = firstMatrix;
     p2 = secondMatrix;
     p1 = NULL;
-    p2 = NULL;
+    p2 = NULL; */
 
   for (int y = 0; y < parametro; y++){
     for (int x = 0; x < parametro; x++){
@@ -250,6 +262,18 @@ int main(int argc, char *argv[])
     }  
     printf("\n");
   }
+  printf("\n");
+
+  printf("\n - - - - - - - - - - - - - - - - - -");
+  printf("\n MATRIZ DE STRASSEN");
+
+  printf("\n - - - - - - - - - - - - - - - - - -");
+
+
+  int **C= Strassen (firstMatrix,secondMatrix,potencia);
+
+    afficher(C,potencia);
+
   
   
   return 0;
